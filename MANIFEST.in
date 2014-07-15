@@ -1,0 +1,9 @@
+include LICENSE
+include README.rst
+recursive-include privat24/locale *
+recursive-include privat24/migrations *
+recursive-include privat24/templates *
+recursive-include privat24/templatetags *
+recursive-include privat24/tests *
+recursive-include docs *
+

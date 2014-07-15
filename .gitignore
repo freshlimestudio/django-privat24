@@ -1,0 +1,13 @@
+*.pyc
+*.pyo
+*.pyw
+*.db
+.idea
+*~
+*.tar.gz
+/dist
+/dist/*
+/*.egg-info
+/*.egg-info/*
+local_settings.py
+test_settings.py
