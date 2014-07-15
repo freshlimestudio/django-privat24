@@ -57,8 +57,20 @@ privat24 - это интеграция для работы с платежной
           PRIVAT24_TRANSACTION_MODEL = 'your_app.customprivat24transaction'
 
 
-5. Интеграция содержит встроенную форму для запроса данных.
-   Пример view:
+5. Интеграция содержит встроенную форму для запроса данных. В случае необходимости
+   ее можно переопределить:
+
+          from privat24.forms import Privat24FrontForm
+
+          ..
+          ..
+
+          class CustomPrivat24Form(Privat24FrontForm):
+              amt = forms.CharField(widget=forms.HiddenInput())
+              ccy = forms.CharField(widget=forms.HiddenInput())
+
+
+   Пример создания формы в view:
 
           from privat24.integration import Privat24Integration
 
@@ -75,7 +87,7 @@ privat24 - это интеграция для работы с платежной
           })
           ctx['integration'] = p24
 
-   Пример шаблона (pay_privat24.html):
+   Пример шаблона формы (pay_privat24.html):
 
           <form action="{{ integration.service_url }}" method="post" id="privat24_pay_form">
               {% csrf_token %}
