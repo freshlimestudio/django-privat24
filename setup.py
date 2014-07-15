@@ -18,10 +18,9 @@ setup(
     packages=['privat24'],
     include_package_data=True,
 
-#    url='http://bitbucket.org/denger/django-onpay/',
-#    download_url = 'http://bitbucket.org/denger/django-onpay/get/tip.zip',
+    url='https://github.com/freshlimestudio/django-privat24',
     license = 'MIT License',
-    description = u'Приложение для интеграции платежной системы PRIVAT24 в проекты на Django.'.encode('utf8'),
+    description = 'PRIVAT24 payment system integration.',
     long_description = get_long_desc(),
     author='Igor Nephedov',
     author_email='igonef@pisem.net',
