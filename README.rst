@@ -20,7 +20,7 @@ privat24 - это интеграция для работы с платежной
 
       url(r'^p24/', include(Privat24Integration().urls)),
 
-3. В settings.py пропишите настройки:
+3. В settings.py пропишите настройки::
 
       # Privat24 setting
       PRIVAT24_OPTIONS = {
@@ -30,12 +30,12 @@ privat24 - это интеграция для работы с платежной
         'test_mode': True,
         'return_url':'http://proj/***/', #страница, принимающая клиента после оплаты
         'server_url':'http://proj/p24/notify-handler/', #страница, принимающая ответ API о результате платежа
-    }
+      }
 
 
 4. Интеграция содержит модель транзакций. Для большенства случаев ее хватает.
    Если же нужно добавить еще какие-нибудь поля, модель транзакций можно
-   переопределить:
+   переопределить::
 
       ..
       from privat24.models import AbstractPrivat24Transaction
@@ -52,13 +52,13 @@ privat24 - это интеграция для работы с платежной
               verbose_name = _('privat24 transaction')
               verbose_name_plural = _('privat24 transactions')
 
-   а в settings.py добавить:
+   а в settings.py добавить::
 
           PRIVAT24_TRANSACTION_MODEL = 'your_app.customprivat24transaction'
 
 
 5. Интеграция содержит встроенную форму для запроса данных. В случае необходимости
-   ее можно переопределить:
+   ее можно переопределить::
 
           from privat24.forms import Privat24FrontForm
 
@@ -70,7 +70,7 @@ privat24 - это интеграция для работы с платежной
               ccy = forms.CharField(widget=forms.HiddenInput())
 
 
-   Пример создания формы в view:
+   Пример создания формы в view::
 
           from privat24.integration import Privat24Integration
 
@@ -87,7 +87,7 @@ privat24 - это интеграция для работы с платежной
           })
           ctx['integration'] = p24
 
-   Пример шаблона формы (pay_privat24.html):
+   Пример шаблона формы (pay_privat24.html)::
 
           <form action="{{ integration.service_url }}" method="post" id="privat24_pay_form">
               {% csrf_token %}
@@ -105,7 +105,7 @@ privat24 - это интеграция для работы с платежной
 6. Интеграция имеет встроенный view для получения результатов транзакции.
    В стучае удачного завершения транзакции вызывается сигнал transaction_was_successful.
    Написав обработчик для него можно выполнить некоторые действия, зависящие от результата
-   транзакции:
+   транзакции::
 
     signals.py:
 
