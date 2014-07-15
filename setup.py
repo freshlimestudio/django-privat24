@@ -26,7 +26,8 @@ setup(
     author='Igor Nephedov',
     author_email='igonef@pisem.net',
     install_requires=[
-        'django>=1.5'
+        'django>=1.5',
+        'pyOpenSSL>=0.13.1',
     ],
     classifiers=(
         'Development Status :: 4 - Beta',
