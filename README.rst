@@ -109,6 +109,11 @@ privat24 - это интеграция для работы с платежной
 
     signals.py:
 
+        def update_order(transaction):
+            # тут выполняем нужные действия
+            pass
+
+
         def privat24_transaction_successfull(sender, type, response, **kwargs):
             from privat24 import get_privat24_transaction_model
             TransactionModel = get_privat24_transaction_model()
@@ -120,6 +125,7 @@ privat24 - это интеграция для работы с платежной
     models.py:
 
         from privat24.signals import transaction_was_successful as privat24_transaction_was_successful
+        from .signals import privat24_transaction_successfull
         ..
         ..
 
